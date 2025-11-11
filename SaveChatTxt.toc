@@ -1,0 +1,8 @@
+## Interface: 11508
+## Title: SaveChatTxt
+## Notes: Automatically saves channel chat messages to logs with real-time export
+## Author: JimmyKodu
+## Version: 1.1.0
+## SavedVariables: SaveChatTxtDB
+
+SaveChatTxt.lua
