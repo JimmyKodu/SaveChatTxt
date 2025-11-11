@@ -1,10 +1,12 @@
 # SaveChatTxt
 
-A World of Warcraft Classic Era (Vanilla 1.15.8) addon that automatically saves all channel chat messages to persistent logs.
+A World of Warcraft Classic Era (Vanilla 1.15.8) addon that automatically saves all channel chat messages to persistent logs with real-time export capability.
 
 ## Features
 
 - **Automatic Logging**: Captures all chat messages from various channels in real-time
+- **Real-time Export**: Use `/savechat export` to copy logs to external files immediately
+- **Force Save**: Use `/savechat save` to trigger immediate SavedVariables write
 - **Persistent Storage**: Saves logs using WoW's SavedVariables system
 - **Multiple Channel Support**: Logs messages from:
   - Say, Yell, Whisper
@@ -13,6 +15,7 @@ A World of Warcraft Classic Era (Vanilla 1.15.8) addon that automatically saves 
   - Emotes and system messages
 - **Easy Management**: Simple slash commands to control logging
 - **Memory Efficient**: Automatically limits log size to prevent performance issues
+- **Export Window**: GUI window to select and copy logs for external saving
 
 ## Installation
 
@@ -33,6 +36,19 @@ A World of Warcraft Classic Era (Vanilla 1.15.8) addon that automatically saves 
 - `/savechat disable` - Disable chat logging
 - `/savechat count` - Show number of logged messages
 - `/savechat clear` - Clear all logged messages
+- `/savechat export [count]` - Export last N messages (default 50) to a copyable window
+- `/savechat save` - Force save logs immediately (reloads UI)
+
+### Real-time Export
+
+**Important**: WoW Classic does not support direct file I/O. To get real-time logs:
+
+1. Use `/savechat export [count]` to open an export window with your logs
+2. Press Ctrl+A to select all text
+3. Press Ctrl+C to copy
+4. Paste into your favorite text editor and save
+
+Alternatively, use `/savechat save` to force a UI reload which will write SavedVariables to disk immediately.
 
 ### Accessing Logs
 
@@ -58,6 +74,14 @@ By default, the addon:
 
 - **Interface Version**: 11508 (WoW Classic Era Vanilla 1.15.8)
 - **SavedVariables**: SaveChatTxtDB
+- **Export Format**: `[timestamp] [chatType] <sender> message`
+
+## Limitations
+
+Due to WoW security restrictions, addons cannot write files directly to disk. This addon provides:
+- In-memory logging with immediate capture
+- Export window for manual copy/paste to external files
+- Force save command to trigger SavedVariables write via UI reload
 
 ## License
 
